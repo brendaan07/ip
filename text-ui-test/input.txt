@@ -1,0 +1,6 @@
+todo Buy milk
+todo Do homework
+list
+mark 2
+unmark 1
+bye

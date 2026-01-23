@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Goat {
     public static void main(String[] args) {
-        System.out.println("Hello! I'm Goat Chatbot \n" +
-                "What Can I do for you?  \n"
+        System.out.println("Hello! I'm Goat Chatbot\n" +
+                "What Can I do for you?\n"
         );
         ArrayList<Task> lst = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
@@ -16,7 +16,7 @@ public class Goat {
 
 
             if (command.equals("bye")) {
-                System.out.println("Bye. Hope to see you again soon!");
+                System.out.print("Bye. Hope to see you again soon!");
                 break;
             } else if (command.equals("list")) { //display list
                 for (int i = 0; i < lst.size(); i++) {
@@ -26,12 +26,12 @@ public class Goat {
                 int index = Integer.parseInt(arguments) - 1;
                 Task currTask = lst.get(index);
                 currTask.mark();
-                System.out.println("Nice! I've marked this task as done \n" + currTask);
+                System.out.println("Nice! I've marked this task as done\n" + currTask);
             } else if (command.equals("unmark")) {
                 int index = Integer.parseInt(arguments) - 1;
                 Task currTask = lst.get(index);
                 currTask.unmark();
-                System.out.println("Ok, I've marked this task as not done yet \n" + currTask);
+                System.out.println("Ok, I've marked this task as not done yet\n" + currTask);
             } else if (command.equals("todo")) {
                 ToDos newToDo = new ToDos(arguments);
                 lst.add(newToDo);

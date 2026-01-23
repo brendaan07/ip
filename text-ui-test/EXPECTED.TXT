@@ -1,7 +1,12 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hello! I'm Goat Chatbot
+What Can I do for you?
 
+added [T][ ] Buy milk
+added [T][ ] Do homework
+1. [T][ ] Buy milk
+2. [T][ ] Do homework
+Nice! I've marked this task as done
+[T][X] Do homework
+Ok, I've marked this task as not done yet
+[T][ ] Buy milk
+Bye. Hope to see you again soon!
