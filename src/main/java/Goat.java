@@ -11,6 +11,7 @@ public class Goat {
         while (true) {
             try {
                 String userinput = sc.nextLine().trim(); //remove trailing spaces
+                //used AI to learn how to split Strings into commands and arguments
                 String[] parts = userinput.split("\\s+", 2); //split into command and arguments
                 String command = parts[0].toLowerCase();
                 String arguments = parts.length > 1 ? parts[1] : "";
@@ -28,6 +29,7 @@ public class Goat {
                     if (arguments.isEmpty()) {
                         throw new MissingArgumentException("delete");
                     }
+                    //Asked AI how to convert arguments into int
                     int index = Integer.parseInt(arguments) - 1;
                     Task currTask = lst.get(index);
                     System.out.println(" Noted. I've removed this task:\n" + currTask);
