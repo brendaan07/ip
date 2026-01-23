@@ -32,6 +32,33 @@ public class Goat {
                 Task currTask = lst.get(index);
                 currTask.unmark();
                 System.out.println("Ok, I've marked this task as not done yet \n" + currTask);
+            } else if (command.equals("todo")) {
+                ToDos newToDo = new ToDos(arguments);
+                lst.add(newToDo);
+                System.out.println("added " + newToDo.toString());
+            } else if (command.equals("deadline")) {
+                String[] argParts = arguments.split("/by", 2);
+                String name = argParts.length > 0 ? argParts[0].trim() : "";
+                String deadline = argParts.length > 1 ? argParts[1].trim() : "";
+
+                Deadlines newDeadline = new Deadlines(name, deadline);
+                lst.add(newDeadline);
+                System.out.println("added " + newDeadline.toString());
+            } else if (command.equals("event")) {
+                String[] argparts = arguments.split("/from", 2);  // split on every slash
+                String name = argparts.length > 0 ? argparts[0].trim() : "";
+                String dates = argparts.length > 1 ? argparts[1].trim() : "";
+                String[] dateparts = dates.split("/to", 2);
+                String from = dateparts.length > 0 ? dateparts[0].trim() : "";
+                String to = dateparts.length > 1 ? dateparts[1].trim() : "";
+
+                Events newEvent = new Events(name, from, to);
+                lst.add(newEvent);
+                System.out.println("added " + newEvent.toString());
+
+
+
+
             } else {
                 Task newTask = new Task(userinput);
                 lst.add(newTask);

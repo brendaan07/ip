@@ -1,30 +1,9 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class Task {
-    private boolean done;
-    private String name;
-
-    public Task(String name) {
-        this.done = false;
-        this.name = name;
-    }
-
-    public void mark() {
-        this.done = true;
-    }
-
-    public void unmark() {
-        this.done = false;
+public class ToDos extends Task {
+    public ToDos(String name) {
+        super(name);
     }
 
     public String toString() {
-        String check = "";
-        if (!this.done) {
-            check = "[ ]";
-        } else {
-            check = "[X]";
-        }
-        return check + " " + this.name;
+        return "[T]" + super.toString();
     }
 }

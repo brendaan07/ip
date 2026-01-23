@@ -1,4 +1,14 @@
-package PACKAGE_NAME;
+public class Events extends Task {
+    private String from;
+    private String to;
 
-public class Events {
+    public Events(String name, String from, String to) {
+        super(name);
+        this.from = from;
+        this.to = to;
+    }
+
+    public String toString() {
+        return "[E]" + super.toString() + " (from: " + this.from + " to: " + this.to + ")";
+    }
 }
