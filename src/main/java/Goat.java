@@ -24,6 +24,14 @@ public class Goat {
                     for (int i = 0; i < lst.size(); i++) {
                         System.out.println((i + 1) + ". " + lst.get(i).toString());
                     }
+                } else if (command.equals("delete")) {
+                    if (arguments.isEmpty()) {
+                        throw new MissingArgumentException("delete");
+                    }
+                    int index = Integer.parseInt(arguments) - 1;
+                    Task currTask = lst.get(index);
+                    System.out.println(" Noted. I've removed this task:\n" + currTask);
+                    lst.remove(index);
                 } else if (command.equals("mark")) { //mark task
                     if (arguments.isEmpty()) {
                         throw new MissingArgumentException("mark");
