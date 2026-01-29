@@ -28,12 +28,13 @@ test {
 }
 
 application {
-    mainClass.set("goat.Goat")
+    mainClass.set("goat.ui.Goat")
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "goat"
     archiveClassifier = null
+    archiveFileName = 'goat.jar'
 }
 
 run{
