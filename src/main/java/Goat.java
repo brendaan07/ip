@@ -12,16 +12,17 @@ public class Goat {
     private static final Path DATA_FILE = Paths.get("data", "goat.txt");
 
     public static void main(String[] args) {
-        System.out.println("Hello! I'm Goat Chatbot\n" +
-                "What Can I do for you?\n"
-        );
+        Ui ui = new Ui();
+
+        ui.showMessage("Hello! I'm Goat Chatbot \n What can I do for you?");
+
         ArrayList<Task> lst = new ArrayList<>();
         loadTasks(lst); //loadtasks from hard drive
 
-        Scanner sc = new Scanner(System.in);
+
         while (true) {
             try {
-                String userinput = sc.nextLine().trim(); //remove trailing spaces
+                String userinput = ui.readCommand(); //remove trailing spaces
                 //used AI to learn how to split Strings into commands and arguments
                 String[] parts = userinput.split("\\s+", 2); //split into command and arguments
                 String command = parts[0].toLowerCase();
@@ -169,8 +170,5 @@ public class Goat {
         }
         Files.write(DATA_FILE, lines);
     }
-
-
-
 
 }
