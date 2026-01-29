@@ -3,6 +3,11 @@ package goat.tasks;//asked AI what are the imports needed and how to use them
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a Events type of task in the Goat chatbot application.
+ * Each event also has a from and to date
+ */
+
 public class Events extends Task {
     private final LocalDate from;
     private final LocalDate to;

@@ -13,13 +13,27 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Handles storage of the list in the hard disk. Allows the same list to be loaded
+ * in between restarts of the chatbot
+ */
 public class Storage {
     private final Path filePath;
 
+    /**
+     * Constructs the Storage filePath
+     *
+     * @param filePath
+     */
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
     }
 
+    /**
+     * loads the list from the hard disk into the chatbot instance
+     *
+     * @return tasks list of tasks saved in the hard disk
+     */
     public ArrayList<Task> load()  {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
@@ -59,6 +73,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * saves the updated tasks into the hard disk
+     *
+     * @param tasks
+     * @throws IOException
+     */
     public void save(ArrayList<Task> tasks) throws IOException {
         List<String> lines = new ArrayList<>();
         for (Task task : tasks) {

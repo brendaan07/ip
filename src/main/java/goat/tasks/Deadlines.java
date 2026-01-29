@@ -6,6 +6,11 @@ import java.time.format.DateTimeParseException;
 import goat.exceptions.GoatException;
 
 
+/**
+ * Represents a Deadline type of task in the Goat chatbot application.
+ * Each deadline also has a deadline date
+ */
+
 public class Deadlines extends Task {
     private final LocalDate deadline;
 
