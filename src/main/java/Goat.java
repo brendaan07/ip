@@ -41,14 +41,19 @@ public class Goat {
                 case "deadline":
                     Parser.requireArgs(arguments, "deadline");
                     String[] deadlineParts = arguments.split("/by", 2);
-                    taskList.add(new Deadlines(deadlineParts[0].trim(), deadlineParts[1].trim()));
+                    String name = deadlineParts[0].trim();
+                    String by = deadlineParts[1].trim();
+                    taskList.add(new Deadlines(name, by));
                     break;
 
                 case "event":
                     Parser.requireArgs(arguments, "event");
                     String[] eventParts = arguments.split("/from", 2);
+                    String eventName = eventParts[0].trim();
                     String[] dates = eventParts[1].split("/to", 2);
-                    taskList.add(new Events(eventParts[0].trim(), dates[0].trim(), dates[1].trim()));
+                    String from = dates[0].trim();
+                    String to = dates[1].trim();
+                    taskList.add(new Events(eventName, from, to));
                     break;
 
                 case "delete":

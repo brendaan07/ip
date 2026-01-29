@@ -21,8 +21,19 @@ public class Storage {
                 return tasks;
             }
             List<String> lines = Files.readAllLines(filePath);
+
+            //asked AI for an edited version to skip lines if .txt file is empty
             for (String line : lines) {
+                if (line.trim().isEmpty()) {
+                    continue; // skip empty lines
+                }
+
                 String[] parts = line.split("\\s*\\|\\s*");
+                if (parts.length < 2) {
+                    System.out.println("Warning: invalid line in file: " + line);
+                    continue; // skip invalid line
+                }
+
                 String type = parts[0];
                 boolean done = parts[1].equals("1");
 
