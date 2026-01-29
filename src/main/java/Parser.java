@@ -4,8 +4,8 @@ public class Parser {
 
     public Parser(String userInput) {
         String[] parts = userInput.split("\\s+", 2); //split into command and arguments
-        String command = parts[0].toLowerCase();
-        String arguments = parts.length > 1 ? parts[1] : "";
+        this.command = parts[0].toLowerCase();
+        this.arguments = parts.length > 1 ? parts[1] : "";
     }
 
     public String getCommand() {

@@ -13,9 +13,14 @@ public class TaskList {
     public void add(Task task) throws IOException {
         tasks.add(task);
         storage.save(tasks);
+        System.out.println("added " + task.toString());
     }
 
-    public void delete(int index) throws IOException {
+    public void delete(int index) throws IOException, GoatException {
+        if (index < 0 || index >= tasks.size()) {
+            throw new GoatException("Invalid index! There are only " + tasks.size() + " tasks");
+        }
+
         Task removed = tasks.remove(index);
         storage.save(tasks);
         System.out.println("Noted. I've removed this task:\n" + removed);
