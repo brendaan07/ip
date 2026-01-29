@@ -17,6 +17,10 @@ import java.nio.file.Paths;
 import java.util.Scanner; */
 import java.util.ArrayList;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class Goat {
     private static final String DATA_PATH = "data/goat.txt";
 

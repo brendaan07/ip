@@ -4,6 +4,7 @@ import goat.tasks.Deadlines;
 import goat.tasks.Events;
 import goat.tasks.Task;
 import goat.tasks.ToDos;
+import goat.exceptions.GoatException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +20,7 @@ public class Storage {
         this.filePath = Paths.get(filePath);
     }
 
-    public ArrayList<Task> load() {
+    public ArrayList<Task> load()  {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             Files.createDirectories(filePath.getParent());

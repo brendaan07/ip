@@ -4,6 +4,7 @@ import goat.tasks.Deadlines;
 import goat.tasks.Events;
 import goat.tasks.ToDos;
 import goat.tasks.Task;
+import goat.exceptions.GoatException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
