@@ -1,26 +1,36 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Task {
-    private boolean done;
+public abstract class Task {
+    private boolean isDone;
     private String name;
 
+    public abstract String toFileString(); //file saving handling
+
     public Task(String name) {
-        this.done = false;
+        this.isDone = false;
         this.name = name;
     }
 
+    public boolean isDone() {
+        return this.isDone;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
     public void mark() {
-        this.done = true;
+        this.isDone = true;
     }
 
     public void unmark() {
-        this.done = false;
+        this.isDone = false;
     }
 
     public String toString() {
         String check = "";
-        if (!this.done) {
+        if (!this.isDone) {
             check = "[ ]";
         } else {
             check = "[X]";

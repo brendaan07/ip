@@ -4,7 +4,14 @@ public class Deadlines extends Task {
         super(name);
         this.deadline = deadline;
     }
+
     public String toString() {
         return "[D]" + super.toString() + " (by: " + this.deadline + ")";
     }
+
+    @Override
+    public String toFileString() {
+        return "D | " + (this.isDone() ? "1" : "0") + " | " + this.getName() + " | " + this.deadline;
+    }
+
 }
