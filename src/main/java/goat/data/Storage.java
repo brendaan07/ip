@@ -1,3 +1,10 @@
+package goat.data;
+
+import goat.tasks.Deadlines;
+import goat.tasks.Events;
+import goat.tasks.Task;
+import goat.tasks.ToDos;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

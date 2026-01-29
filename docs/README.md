@@ -1,4 +1,4 @@
-# Goat User Guide
+# goat.goat User Guide
 
 // Update the title above to match the actual product name
 

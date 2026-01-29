@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+package goat.tasks;
 
 public abstract class Task {
     private boolean isDone;

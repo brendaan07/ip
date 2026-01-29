@@ -1,3 +1,9 @@
+package goat.tasklist;
+
+import goat.data.Storage;
+import goat.exceptions.GoatException;
+import goat.tasks.Task;
+
 import java.io.IOException;
 import java.util.ArrayList;
 

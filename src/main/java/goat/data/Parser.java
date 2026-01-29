@@ -1,3 +1,7 @@
+package goat.data;
+
+import goat.exceptions.MissingArgumentException;
+
 public class Parser {
     private final String command;
     private final String arguments;

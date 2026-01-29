@@ -1,10 +1,22 @@
+package goat;
+
+import goat.data.Parser;
+import goat.data.Storage;
+import goat.exceptions.GoatException;
+import goat.exceptions.MissingArgumentException;
+import goat.tasklist.TaskList;
+import goat.tasks.Deadlines;
+import goat.tasks.Events;
+import goat.tasks.Task;
+import goat.tasks.ToDos;
+import goat.ui.Ui;
+
 import java.io.IOException;
 /* import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner; */
 import java.util.ArrayList;
-import java.util.List;
 
 public class Goat {
     private static final String DATA_PATH = "data/goat.txt";
@@ -14,7 +26,7 @@ public class Goat {
         Storage storage = new Storage(DATA_PATH);
         ArrayList<Task> tasks = storage.load();
         TaskList taskList = new TaskList(tasks, storage);
-        ui.showMessage("Hello! I'm Goat Chatbot \n What can I do for you?");
+        ui.showMessage("Hello! I'm Goat.Goat Chatbot \n What can I do for you?");
 
         while (true) {
             try {
