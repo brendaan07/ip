@@ -1,4 +1,4 @@
-package goat;
+package goat.ui;
 
 import goat.data.Parser;
 import goat.data.Storage;
@@ -9,7 +9,6 @@ import goat.tasks.Deadlines;
 import goat.tasks.Events;
 import goat.tasks.Task;
 import goat.tasks.ToDos;
-import goat.ui.Ui;
 
 import java.io.IOException;
 /* import java.nio.file.Files;
