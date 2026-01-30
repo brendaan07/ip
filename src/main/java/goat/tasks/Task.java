@@ -4,7 +4,7 @@ public abstract class Task {
     private boolean isDone;
     private String name;
 
-    public abstract String toFileString(); //file saving handling
+    public abstract String toFileString(); // File saving handling
 
     public Task(String name) {
         this.isDone = false;

@@ -9,8 +9,7 @@ public class Ui {
         sc = new Scanner(System.in);
     }
 
-    public String readCommand() {
-        return sc.nextLine().trim(); //remove trailing spaces
+    public String readCommand() { return sc.nextLine().trim(); // Remove trailing spaces
     }
 
     public void showMessage(String message) {

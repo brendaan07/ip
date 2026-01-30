@@ -4,7 +4,6 @@ import goat.tasks.Deadlines;
 import goat.tasks.Events;
 import goat.tasks.Task;
 import goat.tasks.ToDos;
-import goat.exceptions.GoatException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,7 +19,7 @@ public class Storage {
         this.filePath = Paths.get(filePath);
     }
 
-    public ArrayList<Task> load()  {
+    public ArrayList<Task> load() {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             Files.createDirectories(filePath.getParent());
@@ -30,7 +29,7 @@ public class Storage {
             }
             List<String> lines = Files.readAllLines(filePath);
 
-            //asked AI for an edited version to skip lines if .txt file is empty
+            // Asked AI for an edited version to skip lines if .txt file is empty
             for (String line : lines) {
                 if (line.trim().isEmpty()) {
                     continue; // skip empty lines
@@ -46,11 +45,19 @@ public class Storage {
                 boolean done = parts[1].equals("1");
 
                 Task task = null;
-                if (type.equals("T")) task = new ToDos(parts[2]);
-                else if (type.equals("D")) task = new Deadlines(parts[2], parts[3]);
-                else if (type.equals("E")) task = new Events(parts[2], parts[3], parts[4]);
+                if (type.equals("T")) {
+                    task = new ToDos(parts[2]);
+                }
+                else if (type.equals("D")) {
+                    task = new Deadlines(parts[2], parts[3]);
+                }
+                else if (type.equals("E")) {
+                    task = new Events(parts[2], parts[3], parts[4]);
+                }
 
-                if (task != null && done) task.mark();
+                if (task != null && done) {
+                    task.mark();
+                }
                 tasks.add(task);
             }
         } catch (IOException e) {
