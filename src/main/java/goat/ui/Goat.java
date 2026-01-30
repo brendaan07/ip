@@ -79,6 +79,12 @@ public class Goat {
                     taskList.unmark(Integer.parseInt(arguments) - 1);
                     break;
 
+                case "find":
+                    Parser.requireArgs(arguments, "find");
+                    ArrayList<Task> results = taskList.find(arguments);
+                    ui.showFindResults(results);
+                    break;
+
                 default:
                     throw new GoatException("I'm sorry, I don't understand");
                 }
