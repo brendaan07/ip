@@ -11,15 +11,8 @@ import goat.tasks.Task;
 import goat.tasks.ToDos;
 
 import java.io.IOException;
-/* import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Scanner; */
 import java.util.ArrayList;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class Goat {
     private static final String DATA_PATH = "data/goat.txt";
@@ -33,19 +26,19 @@ public class Goat {
 
         while (true) {
             try {
-                String userInput = ui.readCommand(); //remove trailing spaces
+                String userInput = ui.readCommand(); // Remove trailing spaces
                 Parser parser = new Parser(userInput);
                 String command = parser.getCommand();
                 String arguments = parser.getArguments();
 
-                //used AI to give an example of a switch usage
+                // Used AI to give an example of a switch usage
                 switch (command) {
                 case "bye":
                     ui.showMessage("Bye. Hope to see you again soon!");
                     return;
 
                 case "list":
-                    taskList.list(); //print list
+                    taskList.list(); // Print list
                     break;
 
                 case "todo":
@@ -84,6 +77,12 @@ public class Goat {
                 case "unmark":
                     Parser.requireArgs(arguments, "unmark");
                     taskList.unmark(Integer.parseInt(arguments) - 1);
+                    break;
+
+                case "find":
+                    Parser.requireArgs(arguments, "find");
+                    ArrayList<Task> results = taskList.find(arguments);
+                    ui.showFindResults(results);
                     break;
 
                 default:

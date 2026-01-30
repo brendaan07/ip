@@ -1,10 +1,5 @@
 package goat.tasks;
 
-/**
- * Represents a generic task in the Goat chatbot application.
- * Each task has a name and a completion status (done or not done).
- */
-
 public abstract class Task {
     private boolean isDone;
     private String name;

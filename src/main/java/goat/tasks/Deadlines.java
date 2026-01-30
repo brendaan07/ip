@@ -1,9 +1,10 @@
-package goat.tasks;//asked AI what are the imports needed and how to use them
+package goat.tasks;
+
+// Asked AI what are the imports needed and how to use them
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import goat.exceptions.GoatException;
+
 
 
 /**
@@ -17,7 +18,7 @@ public class Deadlines extends Task {
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy");
 
-    public Deadlines (String name, String deadline)  {
+    public Deadlines(String name, String deadline) {
         super(name);
         this.deadline = LocalDate.parse(deadline, INPUT_FORMAT);
     }
