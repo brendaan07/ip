@@ -29,7 +29,7 @@ test {
 }
 
 application {
-    mainClass.set("goat.ui.Goat")
+    mainClass.set("goat.gui.Launcher")
 }
 
 shadowJar {

@@ -114,5 +114,16 @@ public class TaskList {
         return matchedTasks;
     }
 
+    public String listAsString() {
+        if (tasks.isEmpty()) {
+            return "No tasks in your list!";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tasks.size(); i++) {
+            sb.append(i + 1).append(". ").append(tasks.get(i)).append("\n");
+        }
+        return sb.toString();
+    }
+
 }
 
