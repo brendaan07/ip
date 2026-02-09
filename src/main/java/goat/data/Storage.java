@@ -1,26 +1,40 @@
 package goat.data;
 
-import goat.tasks.Deadlines;
-import goat.tasks.Events;
-import goat.tasks.Task;
-import goat.tasks.ToDos;
-import goat.exceptions.GoatException;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
+import goat.tasks.Deadlines;
+import goat.tasks.Events;
+import goat.tasks.Task;
+import goat.tasks.ToDos;
+
+/**
+ * Handles reading from and writing to the task storage file.
+ * Creates the file if it does not exist and converts lines into Task objects.
+ */
 public class Storage {
+
     private final Path filePath;
 
+    /**
+     * Constructs a Storage object pointing to a file.
+     *
+     * @param filePath path to the storage file
+     */
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
     }
 
-    public ArrayList<Task> load()  {
+    /**
+     * Loads tasks from the storage file.
+     *
+     * @return list of tasks read from the file
+     */
+    public ArrayList<Task> load() {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             Files.createDirectories(filePath.getParent());
@@ -30,7 +44,6 @@ public class Storage {
             }
             List<String> lines = Files.readAllLines(filePath);
 
-            //asked AI for an edited version to skip lines if .txt file is empty
             for (String line : lines) {
                 if (line.trim().isEmpty()) {
                     continue; // skip empty lines
@@ -46,11 +59,17 @@ public class Storage {
                 boolean done = parts[1].equals("1");
 
                 Task task = null;
-                if (type.equals("T")) task = new ToDos(parts[2]);
-                else if (type.equals("D")) task = new Deadlines(parts[2], parts[3]);
-                else if (type.equals("E")) task = new Events(parts[2], parts[3], parts[4]);
+                if (type.equals("T")) {
+                    task = new ToDos(parts[2]);
+                } else if (type.equals("D")) {
+                    task = new Deadlines(parts[2], parts[3]);
+                } else if (type.equals("E")) {
+                    task = new Events(parts[2], parts[3], parts[4]);
+                }
 
-                if (task != null && done) task.mark();
+                if (task != null && done) {
+                    task.mark();
+                }
                 tasks.add(task);
             }
         } catch (IOException e) {
@@ -59,6 +78,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves tasks to the storage file.
+     *
+     * @param tasks list of tasks to save
+     * @throws IOException if writing fails
+     */
     public void save(ArrayList<Task> tasks) throws IOException {
         List<String> lines = new ArrayList<>();
         for (Task task : tasks) {

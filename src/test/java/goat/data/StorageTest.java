@@ -1,19 +1,24 @@
 package goat.data;
 
-import goat.tasks.Deadlines;
-import goat.tasks.Events;
-import goat.tasks.ToDos;
-import goat.tasks.Task;
-import goat.exceptions.GoatException;
-import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
+import goat.tasks.Deadlines;
+import goat.tasks.Events;
+import goat.tasks.Task;
+import goat.tasks.ToDos;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+
+/**
+ * Unit tests for Storage class.
+ * Verifies that tasks are saved and loaded correctly.
+ */
 public class StorageTest {
 
     //asked AI to guide me on implementing assert methods

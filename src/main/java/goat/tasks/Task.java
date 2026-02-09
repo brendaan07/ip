@@ -1,5 +1,9 @@
 package goat.tasks;
 
+/**
+ * Represents a task in the Goat task list.
+ * A task has a name and a done status.
+ */
 public abstract class Task {
     private boolean isDone;
     private String name;
@@ -23,6 +27,11 @@ public abstract class Task {
      */
     public abstract String toFileString();
 
+    /**
+     * Returns Done boolean is true or false
+     *
+     * @return true or false
+     */
     public boolean isDone() {
         return this.isDone;
     }

@@ -1,22 +1,29 @@
 package goat.tasks;
 
-// Asked AI what are the imports needed and how to use them
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Represents a Events type of task in the Goat chatbot application.
- * Each event also has a from and to date
+ * Represents an event task in the Goat chatbot application.
+ * Each event has a start and an end date.
  */
-
 public class Events extends Task {
+
+    private static final DateTimeFormatter INPUT_FORMAT =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter OUTPUT_FORMAT =
+            DateTimeFormatter.ofPattern("MMM dd yyyy");
+
     private final LocalDate from;
     private final LocalDate to;
 
-    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy");
-
+    /**
+     * Creates an event task with a start and end date.
+     *
+     * @param name Name of the event
+     * @param from Start date in yyyy-MM-dd format
+     * @param to End date in yyyy-MM-dd format
+     */
     public Events(String name, String from, String to) {
         super(name);
         this.from = LocalDate.parse(from, INPUT_FORMAT);
@@ -25,12 +32,17 @@ public class Events extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + this.from.format(OUTPUT_FORMAT) + " to: " + this.to.format(OUTPUT_FORMAT) + ")";
+        return "[E]" + super.toString()
+                + " (from: " + this.from.format(OUTPUT_FORMAT)
+                + " to: " + this.to.format(OUTPUT_FORMAT) + ")";
     }
 
     @Override
     public String toFileString() {
-        return "E | " + (this.isDone() ? "1" : "0") + " | " + this.getName() + " | " + this.from.format(OUTPUT_FORMAT) + " | " + this.to.format(OUTPUT_FORMAT);
+        return "E | " + (this.isDone() ? "1" : "0")
+                + " | " + this.getName()
+                + " | " + this.from.format(OUTPUT_FORMAT)
+                + " | " + this.to.format(OUTPUT_FORMAT);
     }
-
 }
+

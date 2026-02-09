@@ -1,5 +1,8 @@
 package goat.ui;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import goat.data.Parser;
 import goat.data.Storage;
 import goat.exceptions.GoatException;
@@ -10,10 +13,11 @@ import goat.tasks.Events;
 import goat.tasks.Task;
 import goat.tasks.ToDos;
 
-import java.io.IOException;
-import java.util.ArrayList;
 
-
+/**
+ * Entry point of the Goat chatbot application.
+ * Handles program initialization and the main command-processing loop.
+ */
 public class Goat {
     private static final String DATA_PATH = "data/goat.txt";
 

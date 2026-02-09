@@ -11,13 +11,17 @@ import java.time.format.DateTimeFormatter;
  * Represents a Deadline type of task in the Goat chatbot application.
  * Each deadline also has a deadline date
  */
-
 public class Deadlines extends Task {
-    private final LocalDate deadline;
-
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy");
 
+    private final LocalDate deadline;
+
+    /**
+     * Builds a Deadline instance. Each deadline has a name and a deadline date.
+     * @param name
+     * @param deadline
+     */
     public Deadlines(String name, String deadline) {
         super(name);
         this.deadline = LocalDate.parse(deadline, INPUT_FORMAT);
@@ -25,12 +29,13 @@ public class Deadlines extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + this.deadline.format(OUTPUT_FORMAT) + ")";
+        return "[D]" + super.toString() + " (by: "
+                + this.deadline.format(OUTPUT_FORMAT) + ")";
     }
 
     @Override
     public String toFileString() {
-        return "D | " + (this.isDone() ? "1" : "0") + " | " + this.getName() + " | " + this.deadline.format(OUTPUT_FORMAT);
+        return "D | " + (this.isDone() ? "1" : "0") + " | "
+                + this.getName() + " | " + this.deadline.format(OUTPUT_FORMAT);
     }
-
 }

@@ -1,11 +1,12 @@
 package goat.tasklist;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import goat.data.Storage;
 import goat.exceptions.GoatException;
 import goat.tasks.Task;
 
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Represents a list of tasks in the Goat chatbot application.
