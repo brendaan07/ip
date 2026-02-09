@@ -38,6 +38,10 @@ shadowJar {
     archiveFileName = 'goat.jar'
 }
 
-run{
+checkstyle {
+    toolVersion = '11.0.0'
+}
+
+run {
     standardInput = System.in
 }
