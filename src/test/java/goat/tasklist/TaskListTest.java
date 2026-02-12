@@ -14,7 +14,6 @@ import goat.tasks.Task;
 import goat.tasks.ToDos;
 
 public class TaskListTest {
-
     private TaskList createTaskList() throws IOException {
         ArrayList<Task> tasks = new ArrayList<>();
         Path tempFile = Files.createTempFile("goat_test", ".txt");

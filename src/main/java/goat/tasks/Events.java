@@ -39,7 +39,7 @@ public class Events extends Task {
 
     @Override
     public String toFileString() {
-        return "E | " + (this.isDone() ? "1" : "0")
+        return "E | " + (this.getIsDone() ? "1" : "0")
                 + " | " + this.getName()
                 + " | " + this.from.format(OUTPUT_FORMAT)
                 + " | " + this.to.format(OUTPUT_FORMAT);
