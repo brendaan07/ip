@@ -27,6 +27,8 @@ public class Deadlines extends Task {
         this.deadline = LocalDate.parse(deadline, INPUT_FORMAT);
     }
 
+
+
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: "
@@ -35,7 +37,7 @@ public class Deadlines extends Task {
 
     @Override
     public String toFileString() {
-        return "D | " + (this.isDone() ? "1" : "0") + " | "
+        return "D | " + (this.getIsDone() ? "1" : "0") + " | "
                 + this.getName() + " | " + this.deadline.format(OUTPUT_FORMAT);
     }
 }

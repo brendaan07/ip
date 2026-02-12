@@ -16,7 +16,7 @@ public class ToDos extends Task {
 
     @Override
     public String toFileString() {
-        return "T | " + (this.isDone() ? "1" : "0") + " | " + this.getName();
+        return "T | " + (this.getIsDone() ? "1" : "0") + " | " + this.getName();
     }
 
 }
