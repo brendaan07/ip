@@ -28,6 +28,10 @@ public class Goat {
      */
 
     public String getResponse(String input) {
+
+        assert input != null && !input.isBlank() : "Input to getResponse should not be blank";
+
+        Ui ui = new Ui();
         Storage storage = new Storage(DATA_PATH);
         ArrayList<Task> tasks = storage.load();
         TaskList taskList = new TaskList(tasks, storage);
