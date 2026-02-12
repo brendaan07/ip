@@ -36,6 +36,7 @@ public class TaskList {
      * @throws IOException if saving to the storage file fails
      */
     public void add(Task task) throws IOException {
+        assert task != null : "Cannot add null task";
         tasks.add(task);
         storage.save(tasks);
         System.out.println("added " + task.toString());
