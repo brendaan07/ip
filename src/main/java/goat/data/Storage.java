@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import goat.tasklist.Priority;
 import goat.tasks.Deadlines;
 import goat.tasks.Events;
 import goat.tasks.Task;
@@ -58,14 +59,24 @@ public class Storage {
 
                 String type = parts[0];
                 boolean done = parts[1].equals("1");
+                Priority priority = Priority.LOW;
+
+                //Parse Priority
+                if (parts.length > 3) {
+                    try {
+                        priority = Priority.valueOf(parts[parts.length - 1].trim().toUpperCase());
+                    } catch (IllegalArgumentException e) {
+                        priority = Priority.LOW; // fallback
+                    }
+                }
 
                 Task task = null;
                 if (type.equals("T")) {
-                    task = new ToDos(parts[2]);
+                    task = new ToDos(parts[2], priority);
                 } else if (type.equals("D")) {
-                    task = new Deadlines(parts[2], parts[3]);
+                    task = new Deadlines(parts[2], parts[3], priority);
                 } else if (type.equals("E")) {
-                    task = new Events(parts[2], parts[3], parts[4]);
+                    task = new Events(parts[2], parts[3], parts[4], priority);
                 }
 
                 if (task != null && done) {

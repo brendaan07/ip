@@ -1,5 +1,7 @@
 package goat.tasks;
 
+import goat.tasklist.Priority;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -24,8 +26,8 @@ public class Events extends Task {
      * @param from Start date in yyyy-MM-dd format
      * @param to End date in yyyy-MM-dd format
      */
-    public Events(String name, String from, String to) {
-        super(name);
+    public Events(String name, String from, String to, Priority priority) {
+        super(name, priority);
         this.from = LocalDate.parse(from, INPUT_FORMAT);
         this.to = LocalDate.parse(to, INPUT_FORMAT);
     }
@@ -42,7 +44,8 @@ public class Events extends Task {
         return "E | " + (this.getIsDone() ? "1" : "0")
                 + " | " + this.getName()
                 + " | " + this.from.format(OUTPUT_FORMAT)
-                + " | " + this.to.format(OUTPUT_FORMAT);
+                + " | " + this.to.format(OUTPUT_FORMAT)
+                + " | " + this.getPriority();
     }
 }
 

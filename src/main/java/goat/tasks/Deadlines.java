@@ -2,6 +2,8 @@ package goat.tasks;
 
 // Asked AI what are the imports needed and how to use them
 
+import goat.tasklist.Priority;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -22,8 +24,8 @@ public class Deadlines extends Task {
      * @param name
      * @param deadline
      */
-    public Deadlines(String name, String deadline) {
-        super(name);
+    public Deadlines(String name, String deadline, Priority priority) {
+        super(name, priority);
         this.deadline = LocalDate.parse(deadline, INPUT_FORMAT);
     }
 
@@ -38,6 +40,7 @@ public class Deadlines extends Task {
     @Override
     public String toFileString() {
         return "D | " + (this.getIsDone() ? "1" : "0") + " | "
-                + this.getName() + " | " + this.deadline.format(OUTPUT_FORMAT);
+                + this.getName() + " | " + this.deadline.format(OUTPUT_FORMAT)
+                + " | " + this.getPriority();
     }
 }

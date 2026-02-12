@@ -84,6 +84,14 @@ public class TaskList {
         System.out.println("Ok, I've marked this task as not done yet\n" + task);
     }
 
+    public void setPriority(int index, String arguments) throws IOException {
+        Task task = tasks.get(index);
+        arguments = arguments.trim().toUpperCase();
+        task.setPriority(Priority.valueOf(arguments));
+        storage.save(tasks);
+        System.out.println("Ok, I've marked this task as priority \n" + task.getPriority());
+    }
+
     /**
      * Prints all tasks in the list.
      */

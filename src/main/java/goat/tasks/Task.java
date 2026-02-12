@@ -1,12 +1,16 @@
 package goat.tasks;
 
+import goat.tasklist.Priority;
+
 /**
  * Represents a task in the Goat task list.
- * A task has a name and a done status.
+ * A task has a name, done status and priority.
+ * Priorities are set to LOW by default
  */
 public abstract class Task {
     private boolean isDone;
     private String name;
+    private Priority priority;
 
     /**
      * Constructs a Task with the given name.
@@ -14,9 +18,11 @@ public abstract class Task {
      *
      * @param name the name of the task
      */
-    public Task(String name) {
+
+    public Task(String name, Priority priority) {
         this.isDone = false;
         this.name = name;
+        this.priority = priority;
     }
 
     /**
@@ -60,6 +66,22 @@ public abstract class Task {
     }
 
     /**
+     * Allows code to get the priority to print or store
+     * @return
+     */
+    public Priority getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Allows users to edit priority of task item
+     * @param priority
+     */
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    /**
      * Returns a string representation of the task, including its completion status.
      *
      * @return a string in the format "[ ] name" or "[X] name"
@@ -71,6 +93,6 @@ public abstract class Task {
         } else {
             check = "[X]";
         }
-        return check + " " + this.name;
+        return check + " " + this.name + " (P: " + this.priority + ")";
     }
 }

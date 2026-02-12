@@ -1,6 +1,7 @@
 package goat.ui;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import goat.data.Parser;
@@ -8,6 +9,7 @@ import goat.data.Storage;
 import goat.exceptions.GoatException;
 import goat.exceptions.MissingArgumentException;
 import goat.tasklist.TaskList;
+import goat.tasklist.Priority;
 import goat.tasks.Deadlines;
 import goat.tasks.Events;
 import goat.tasks.Task;
@@ -31,7 +33,6 @@ public class Goat {
 
         assert input != null && !input.isBlank() : "Input to getResponse should not be blank";
 
-        Ui ui = new Ui();
         Storage storage = new Storage(DATA_PATH);
         ArrayList<Task> tasks = storage.load();
         TaskList taskList = new TaskList(tasks, storage);
@@ -61,6 +62,8 @@ public class Goat {
                 return handleUnmark(arguments, taskList);
             case "find":
                 return handleFind(arguments, taskList);
+            case "priority":
+                return handlePriority(arguments, taskList);
             default:
                 return "I'm sorry, I don't understand";
             }
@@ -73,7 +76,7 @@ public class Goat {
 
     private String handleTodo(String arguments, TaskList taskList) throws MissingArgumentException, IOException {
         Parser.requireArgs(arguments, "todo");
-        taskList.add(new ToDos(arguments));
+        taskList.add(new ToDos(arguments, Priority.LOW));
         return "Added todo: " + arguments;
     }
 
@@ -87,7 +90,7 @@ public class Goat {
         }
         String name = parts[0].trim();
         String by = parts[1].trim();
-        taskList.add(new Deadlines(name, by));
+        taskList.add(new Deadlines(name, by, Priority.LOW));
         return "Added deadline: " + name + " by " + by;
     }
 
@@ -106,7 +109,7 @@ public class Goat {
         }
         String from = dates[0].trim();
         String to = dates[1].trim();
-        taskList.add(new Events(name, from, to));
+        taskList.add(new Events(name, from, to, Priority.LOW));
         return "Added event: " + name + " from " + from + " to " + to;
     }
 
@@ -129,6 +132,21 @@ public class Goat {
         int index = Integer.parseInt(arguments) - 1;
         taskList.unmark(index);
         return "Unmarked " + arguments;
+    }
+
+    private String handlePriority(String arguments, TaskList taskList) throws MissingArgumentException, GoatException {
+        Parser.requireArgs(arguments, "priority");
+        String[] parts = arguments.split("\\s+", 2);
+        if (parts.length < 2 || parts[1].isBlank()) {
+            throw new GoatException("Indicate priority level LOW, MED or HIGH");
+        }
+        try {
+            int index = Integer.parseInt(parts[0]) - 1;
+            taskList.setPriority(index, parts[1]);
+        } catch (IOException e) {
+            throw new GoatException("Priority must be included in the format LOW, MED or HIGH");
+        }
+        return "Priority changed to " + arguments;
     }
 
     private String handleFind(String arguments, TaskList taskList) throws MissingArgumentException {
