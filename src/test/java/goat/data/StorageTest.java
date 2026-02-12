@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+import goat.tasklist.Priority;
 import org.junit.jupiter.api.Test;
 
 import goat.tasks.Deadlines;
@@ -31,9 +32,9 @@ public class StorageTest {
 
         // Step 2: create tasks to save
         ArrayList<Task> tasksToSave = new ArrayList<>();
-        tasksToSave.add(new ToDos("Read book"));
-        tasksToSave.add(new Deadlines("Return book", "2026-02-29"));
-        tasksToSave.add(new Events("Project meeting", "2026-03-01", "2026-03-02"));
+        tasksToSave.add(new ToDos("Read book", Priority.LOW));
+        tasksToSave.add(new Deadlines("Return book", "2026-02-29", Priority.LOW));
+        tasksToSave.add(new Events("Project meeting", "2026-03-01", "2026-03-02", Priority.LOW));
 
         // Step 3: save tasks
         storage.save(tasksToSave);
