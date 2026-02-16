@@ -1,30 +1,78 @@
-# goat.goat User Guide
+# Goat User Guide
 
-// Update the title above to match the actual product name
+![Ui.png](Ui.png)
 
-// Product screenshot goes here
+Welcome to Goat Chatbot! Goat Chatbot allows you to handle your tasks in a simple and easy way!
+Use Goat Chatbot to ensure you never forget a task! With features like priorities, marking tasks as completed
+and input for dates, you are sure to manage your tasks well wih Goat!
 
-// Product intro goes here
+## Adding todos
+
+To add a todos, simply type '/todo <Todo name> <Date>'.
+
+Example: `Read Book`
+
+```
+Added tdodo: Read Book
+```
 
 ## Adding deadlines
 
-// Describe the action and its outcome.
+To add a deadline, simply type deadline <Deadline name> /by <Date>. 
+Ensure the date is in YYYY-MM-DD format. But don't fret if it isn't, Goat will prompt
+you with the correct format!
 
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
+Example: `deadline Submit Homework /by 2026-02-20`
 
 ```
-expected output
+Added deadline: Submit Homework by 2026-02-20
 ```
 
-## Feature ABC
+## Adding events
 
-// Feature details
+To add a events, simply type deadline <Event name> /from <Date> /to <Date>.
+If you forget to input a from or to date, don't worry, Goat chatbot will simply prompt 
+you to input the correct details
+
+Example: `event Camp /from 2026-02-20 /to 2026-02-24`
+
+```
+Added event: Camp from 2026-02-20 to 2026-02-24
+```
+
+## Feature: View tasks
+
+Simply prompt the chatbot with 'list' to view all your indexed tasks summarised!
+
+Format: 'list'
+
+## Feature: Delete tasks
+
+Allows you to delete tasks you no longer need to keep track of! 
+
+Format: 'delete <index>'
+- Deletes the task at the specified index
+
+Example: 'delete 1'
+
+## Feature: Set Task Priority
+
+At times, we may have tasks that are more important or urgent than others. Goat chatbot allows
+you to set a priority level for each tasks. Upon creation of each task, the priority is set
+to LOW by default. ALl tasks can have a LOW, MED or HIGH priority
+
+Format: 'priority <index> <Priority>'
+- Sets the task as specified index to <Priority>
+
+Example: 'priority 2 HIGH'
 
 
-## Feature XYZ
+## Feature: Find tasks
 
-// Feature details
+Allows you to search for tasks using a keyword
+
+Format: 'find <task name> '
+- Displays all tasks whose name contains <task name>
+- Only the name will be searched
+
+Example: 'find math'
