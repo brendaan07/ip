@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import goat.exceptions.GoatException;
 import goat.tasklist.Priority;
 import goat.tasks.Deadlines;
 import goat.tasks.Events;
@@ -74,9 +75,17 @@ public class Storage {
                 if (type.equals("T")) {
                     task = new ToDos(parts[2], priority);
                 } else if (type.equals("D")) {
-                    task = new Deadlines(parts[2], parts[3], priority);
+                    try {
+                        task = new Deadlines(parts[2], parts[3], priority);
+                    } catch (GoatException e) {
+                        System.out.println("Warning: corrupted task (wrong date format) -> " + line);
+                    }
                 } else if (type.equals("E")) {
-                    task = new Events(parts[2], parts[3], parts[4], priority);
+                    try {
+                        task = new Events(parts[2], parts[3], parts[4], priority);
+                    } catch (GoatException e) {
+                        System.out.println("Warning: corrupted task (wrong date format) -> " + line);
+                    }
                 }
 
                 if (task != null && done) {
