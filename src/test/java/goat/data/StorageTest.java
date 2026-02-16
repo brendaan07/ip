@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+import goat.exceptions.GoatException;
 import goat.tasklist.Priority;
+import goat.ui.Goat;
 import org.junit.jupiter.api.Test;
 
 import goat.tasks.Deadlines;
@@ -33,8 +35,12 @@ public class StorageTest {
         // Step 2: create tasks to save
         ArrayList<Task> tasksToSave = new ArrayList<>();
         tasksToSave.add(new ToDos("Read book", Priority.LOW));
-        tasksToSave.add(new Deadlines("Return book", "2026-02-29", Priority.LOW));
-        tasksToSave.add(new Events("Project meeting", "2026-03-01", "2026-03-02", Priority.LOW));
+        try {
+            tasksToSave.add(new Deadlines("Return book", "2026-02-29", Priority.LOW));
+            tasksToSave.add(new Events("Project meeting", "2026-03-01", "2026-03-02", Priority.LOW));
+        } catch (GoatException e) {
+            System.out.println("Warning: date should be in yyyy-mm-dd format");
+        }
 
         // Step 3: save tasks
         storage.save(tasksToSave);

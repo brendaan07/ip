@@ -1,7 +1,6 @@
 package goat.ui;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import goat.data.Parser;
@@ -33,11 +32,11 @@ public class Goat {
 
         assert input != null && !input.isBlank() : "Input to getResponse should not be blank";
 
-        Storage storage = new Storage(DATA_PATH);
-        ArrayList<Task> tasks = storage.load();
-        TaskList taskList = new TaskList(tasks, storage);
-
         try {
+            Storage storage = new Storage(DATA_PATH);
+            ArrayList<Task> tasks = storage.load();
+            TaskList taskList = new TaskList(tasks, storage);
+
             Parser parser = new Parser(input);
             String command = parser.getCommand();
             String arguments = parser.getArguments();
@@ -69,7 +68,7 @@ public class Goat {
             }
         } catch (MissingArgumentException | GoatException e) {
             return e.getMessage();
-        } catch (IOException e) {
+        } catch (IOException e) { // Handle data file error
             return "Unable to access data file";
         }
     }
@@ -80,7 +79,7 @@ public class Goat {
         return "Added todo: " + arguments;
     }
 
-    private String handleDeadline(String arguments, TaskList taskList) throws MissingArgumentException, IOException {
+    private String handleDeadline(String arguments, TaskList taskList) throws MissingArgumentException, IOException, GoatException {
         Parser.requireArgs(arguments, "deadline");
         String[] parts = arguments.split("/by", 2);
 
@@ -94,7 +93,7 @@ public class Goat {
         return "Added deadline: " + name + " by " + by;
     }
 
-    private String handleEvent(String arguments, TaskList taskList) throws MissingArgumentException, IOException {
+    private String handleEvent(String arguments, TaskList taskList) throws MissingArgumentException, IOException, GoatException {
         Parser.requireArgs(arguments, "event");
         String[] parts = arguments.split("/from", 2);
         if (parts.length < 2 || parts[1].isBlank()) {

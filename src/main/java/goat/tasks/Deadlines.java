@@ -4,8 +4,14 @@ package goat.tasks;
 
 import goat.tasklist.Priority;
 
+import goat.exceptions.GoatException;
+
+
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.time.format.DateTimeFormatter;
+
+
 
 
 
@@ -24,10 +30,16 @@ public class Deadlines extends Task {
      * @param name
      * @param deadline
      */
-    public Deadlines(String name, String deadline, Priority priority) {
+    public Deadlines(String name, String deadline, Priority priority) throws GoatException {
         super(name, priority);
-        this.deadline = LocalDate.parse(deadline, INPUT_FORMAT);
+        try {
+            this.deadline = LocalDate.parse(deadline, INPUT_FORMAT);
+        } catch (DateTimeParseException e) {
+            throw new GoatException("Invalid date format. Please use yyyy-MM-dd (e.g. 2026-12-11)");
+        }
     }
+
+
 
 
 

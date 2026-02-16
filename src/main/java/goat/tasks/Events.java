@@ -1,9 +1,11 @@
 package goat.tasks;
 
+import goat.exceptions.GoatException;
 import goat.tasklist.Priority;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Represents an event task in the Goat chatbot application.
@@ -26,10 +28,16 @@ public class Events extends Task {
      * @param from Start date in yyyy-MM-dd format
      * @param to End date in yyyy-MM-dd format
      */
-    public Events(String name, String from, String to, Priority priority) {
+    public Events(String name, String from, String to, Priority priority) throws GoatException {
         super(name, priority);
-        this.from = LocalDate.parse(from, INPUT_FORMAT);
-        this.to = LocalDate.parse(to, INPUT_FORMAT);
+        try {
+            this.from = LocalDate.parse(from, INPUT_FORMAT);
+            this.to = LocalDate.parse(to, INPUT_FORMAT);
+        } catch (DateTimeParseException e) {
+            throw new GoatException(
+                    "Invalid date format. Please use yyyy-MM-dd (e.g. 2026-12-11)"
+            );
+        }
     }
 
     @Override
