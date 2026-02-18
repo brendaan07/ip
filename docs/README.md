@@ -5,7 +5,7 @@
 
 Welcome to **Goat Chatbot**! Goat Chatbot allows you to handle your tasks in a simple and easy way!
 Use Goat Chatbot to ensure you never forget a task! With features like priorities, marking tasks as completed
-and input for dates, you are sure to manage your tasks well wih Goat!
+and input for dates, you are sure to manage your tasks well with Goat!
 
 -- 
 
