@@ -1,6 +1,7 @@
 # Goat User Guide
 
-![Ui.png](Ui.png)
+<img src="Ui.png" width="400" height="750">
+
 
 Welcome to Goat Chatbot! Goat Chatbot allows you to handle your tasks in a simple and easy way!
 Use Goat Chatbot to ensure you never forget a task! With features like priorities, marking tasks as completed
@@ -54,6 +55,16 @@ Format: 'delete <index>'
 - Deletes the task at the specified index
 
 Example: 'delete 1'
+
+## Feature: Mark and Unmark tasks
+
+Allows you to mark or unmark tasks as completed or uncompleted!
+
+Format: 'mark <index>' OR 'unmark <index> '
+- Marks or unmarks the task at the specified index
+
+Example: 'mark 1'
+Example: 'unmark 2'
 
 ## Feature: Set Task Priority
 
