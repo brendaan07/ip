@@ -1,6 +1,6 @@
 # Goat User Guide
 
-<img src="Ui.png" width="400" height="750">
+<img src="Ui.png" width="300" height="500">
 
 
 Welcome to **Goat Chatbot**! Goat Chatbot allows you to handle your tasks in a simple and easy way!
@@ -55,13 +55,13 @@ Added event: Camp from 2026-02-20 to 2026-02-24
 
 
 
-## Feature: View tasks
+## View tasks
 
 Simply prompt the chatbot with 'list' to view all your indexed tasks summarised!
 
 Format: 'list'
 
-## Feature: Delete tasks
+## Delete tasks
 
 Allows you to delete tasks you no longer need to keep track of! 
 
@@ -70,7 +70,7 @@ Format: 'delete <index>'
 
 Example: 'delete 1'
 
-## Feature: Mark and Unmark tasks
+## Mark and Unmark tasks
 
 Allows you to mark or unmark tasks as completed or uncompleted!
 
@@ -80,7 +80,7 @@ Format: 'mark <index>' OR 'unmark <index> '
 Example: 'mark 1'
 Example: 'unmark 2'
 
-## Feature: Set Task Priority
+## Set Task Priority
 
 At times, we may have tasks that are more important or urgent than others. Goat chatbot allows
 you to set a priority level for each tasks. Upon creation of each task, the priority is set
@@ -92,7 +92,7 @@ Format: 'priority <index> <Priority>'
 Example: 'priority 2 HIGH'
 
 
-## Feature: Find tasks
+## Find tasks
 
 Allows you to search for tasks using a keyword
 
@@ -102,7 +102,7 @@ Format: 'find <task name> '
 
 Example: 'find math'
 
-## Feature: Help
+## Help
 
 If you need help while running the chatbot, simply type 'help' and
 you will be prompted with the link for this user guide!
