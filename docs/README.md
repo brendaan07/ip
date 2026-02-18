@@ -3,10 +3,15 @@
 <img src="Ui.png" width="400" height="750">
 
 
-Welcome to Goat Chatbot! Goat Chatbot allows you to handle your tasks in a simple and easy way!
+Welcome to **Goat Chatbot**! Goat Chatbot allows you to handle your tasks in a simple and easy way!
 Use Goat Chatbot to ensure you never forget a task! With features like priorities, marking tasks as completed
 and input for dates, you are sure to manage your tasks well wih Goat!
 
+-- 
+
+# Task Creation
+
+--
 ## Adding todos
 
 To add a todos, simply type '/todo <Todo name> <Date>'.
@@ -43,6 +48,12 @@ Output:
 ```
 Added event: Camp from 2026-02-20 to 2026-02-24
 ```
+
+--
+
+# Features 
+
+-- 
 
 ## Feature: View tasks
 
@@ -98,4 +109,11 @@ you will be prompted with the link for this user guide!
 
 Format 'help'
 - Goat will prompt the user guide website
+
+## Close the Program
+
+Close the Chatbot. Don't worry, your tasks are saved on your hard disk 
+and will persist between restarts!
+
+Format 'bye'
 
