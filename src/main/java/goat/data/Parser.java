@@ -1,5 +1,6 @@
 package goat.data;
 
+import goat.exceptions.GoatException;
 import goat.exceptions.MissingArgumentException;
 
 /**
@@ -52,5 +53,20 @@ public class Parser {
         if (args.isEmpty()) {
             throw new MissingArgumentException(command);
         }
+    }
+
+    public static void requireTaskArgs(String args, String command) throws GoatException {
+        if (args.isEmpty()) {
+            if (command.equals("todo")) {
+                throw new GoatException("todo task requires arguments <taskname>");
+            } else if (command.equals("deadline")) {
+                throw new GoatException("deadline task requires arguments <taskname> /by <YYYY-MM-DD>");
+            } else {
+                throw new GoatException("event task requires arguments <taskname> /from <YYYY-MM-DD> " +
+                        "/to <YYYY-MM-DD");
+            }
+
+        }
+
     }
 }
