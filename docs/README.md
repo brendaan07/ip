@@ -13,6 +13,7 @@ To add a todos, simply type '/todo <Todo name> <Date>'.
 
 Example: `Read Book`
 
+Output:
 ```
 Added todo: Read Book
 ```
@@ -25,6 +26,7 @@ you with the correct format!
 
 Example: `deadline Submit Homework /by 2026-02-20`
 
+Output:
 ```
 Added deadline: Submit Homework by 2026-02-20
 ```
@@ -37,6 +39,7 @@ you to input the correct details
 
 Example: `event Camp /from 2026-02-20 /to 2026-02-24`
 
+Output:
 ```
 Added event: Camp from 2026-02-20 to 2026-02-24
 ```
@@ -87,3 +90,12 @@ Format: 'find <task name> '
 - Only the name will be searched
 
 Example: 'find math'
+
+## Feature: Help
+
+If you need help while running the chatbot, simply type 'help' and
+you will be prompted with the link for this user guide!
+
+Format 'help'
+- Goat will prompt the user guide website
+

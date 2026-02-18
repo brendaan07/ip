@@ -45,6 +45,8 @@ public class Goat {
             String arguments = parser.getArguments();
 
             switch (command) {
+            case "help":
+                return handleHelp();
             case "bye":
                 Platform.exit();
             case "list":
@@ -160,6 +162,10 @@ public class Goat {
             sb.append(i + 1).append(". ").append(results.get(i)).append("\n");
         }
         return sb.toString();
+    }
+
+    private String handleHelp() {
+        return "Go to https://brendaan07.github.io/ip for the user guide!";
     }
 
 }
