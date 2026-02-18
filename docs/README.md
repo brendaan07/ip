@@ -14,7 +14,7 @@ To add a todos, simply type '/todo <Todo name> <Date>'.
 Example: `Read Book`
 
 ```
-Added tdodo: Read Book
+Added todo: Read Book
 ```
 
 ## Adding deadlines

@@ -1,7 +1,10 @@
 package goat.ui;
 
+import javafx.application.Platform;
+
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 import goat.data.Parser;
 import goat.data.Storage;
@@ -43,7 +46,7 @@ public class Goat {
 
             switch (command) {
             case "bye":
-                return "Bye. Hope to see you again soon!";
+                Platform.exit();
             case "list":
                 taskList.list();
                 return taskList.listAsString();
@@ -73,19 +76,19 @@ public class Goat {
         }
     }
 
-    private String handleTodo(String arguments, TaskList taskList) throws MissingArgumentException, IOException {
-        Parser.requireArgs(arguments, "todo");
+    private String handleTodo(String arguments, TaskList taskList) throws GoatException, IOException {
+        Parser.requireTaskArgs(arguments, "todo");
         taskList.add(new ToDos(arguments, Priority.LOW));
         return "Added todo: " + arguments;
     }
 
     private String handleDeadline(String arguments, TaskList taskList) throws MissingArgumentException, IOException, GoatException {
-        Parser.requireArgs(arguments, "deadline");
+        Parser.requireTaskArgs(arguments, "deadline");
         String[] parts = arguments.split("/by", 2);
 
         if (parts.length < 2 || parts[1].isBlank()) {
             // throw a clear exception instead of letting it crash
-            throw new MissingArgumentException("Deadline must have a '/by' date");
+            throw new GoatException("Deadline must have a '/by' date in the format <YYYY-MM-DD>");
         }
         String name = parts[0].trim();
         String by = parts[1].trim();
@@ -94,17 +97,17 @@ public class Goat {
     }
 
     private String handleEvent(String arguments, TaskList taskList) throws MissingArgumentException, IOException, GoatException {
-        Parser.requireArgs(arguments, "event");
+        Parser.requireTaskArgs(arguments, "event");
         String[] parts = arguments.split("/from", 2);
         if (parts.length < 2 || parts[1].isBlank()) {
-            throw new MissingArgumentException("Event must include a '/from' date");
+            throw new MissingArgumentException("Event must include a '/from' date in the format <YYYY-MM-DD>");
         }
 
         String name = parts[0].trim();
 
         String[] dates = parts[1].split("/to", 2);
         if (dates.length < 2 || dates[0].isBlank() || dates[1].isBlank()) {
-            throw new MissingArgumentException("Event must include both '/from' and '/to' dates");
+            throw new MissingArgumentException("Event must include both '/from' and '/to' dates in the format <YYYY-MM-DD>");
         }
         String from = dates[0].trim();
         String to = dates[1].trim();
