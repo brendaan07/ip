@@ -16,7 +16,7 @@ and input for dates, you are sure to manage your tasks well with Goat!
 
 To add a todos, simply type 'todo <Todo name> <Date>'.
 
-Example: `Read Book`
+Example: `todo Read Book`
 
 Output:
 ```
