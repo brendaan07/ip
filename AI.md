@@ -19,3 +19,16 @@ ChatGPT was effective in providing code for **common templates** like date/time 
 handling. However, at times it did not fully understand the **interconnectivity** of my code when handling 
 classes like `TaskList` and `Goat`. Hence, coding some logic and fixing errors by hand was faster 
 and allowed me to **understand my codebase fully**.
+
+## Use of Copilot in this iP
+
+I used Copilot for AI assistance in this iP.
+
+I used Copilot to help me generate code for **JUnit testing** and **handling user input errors** for for my second 
+release. It also helped me generate code for **common templates** like date/time formatting and storage. 
+
+Specifically, I used Copilot to help me fix my code for **handling user input errors** for differences
+in date and time formats. Copilot helped me edit my date and time storage input format to fix the user input
+error handling. 
+
+Additionally, Copilot helped me with finalising Checkstyle errors in my final release. 
