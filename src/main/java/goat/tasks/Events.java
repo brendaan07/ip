@@ -1,11 +1,12 @@
 package goat.tasks;
 
-import goat.exceptions.GoatException;
-import goat.tasklist.Priority;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+
+import goat.exceptions.GoatException;
+import goat.tasklist.Priority;
 
 /**
  * Represents an event task in the Goat chatbot application.
@@ -14,9 +15,9 @@ import java.time.format.DateTimeParseException;
 public class Events extends Task {
 
     private static final DateTimeFormatter INPUT_FORMAT =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter.ofPattern("uuuu-M-d").withResolverStyle(ResolverStyle.STRICT);
     private static final DateTimeFormatter OUTPUT_FORMAT =
-            DateTimeFormatter.ofPattern("MMM dd yyyy");
+            DateTimeFormatter.ofPattern("uuuu-MM-dd");
 
     private final LocalDate from;
     private final LocalDate to;

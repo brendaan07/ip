@@ -27,10 +27,10 @@ public class TaskListTest {
 
         assertEquals(0, taskList.size());
 
-        taskList.add(new ToDos("Read book"));
+        taskList.add(new ToDos("Read book", Priority.LOW));
         assertEquals(1, taskList.size());
 
-        taskList.add(new ToDos("Write essay"));
+        taskList.add(new ToDos("Write essay", Priority.LOW));
         assertEquals(2, taskList.size());
     }
 }

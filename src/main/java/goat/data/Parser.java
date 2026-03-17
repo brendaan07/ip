@@ -55,6 +55,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Validates that task-creation commands include required arguments.
+     *
+     * @param args task arguments provided by the user
+     * @param command task command type (todo, deadline, event)
+     * @throws GoatException if required task arguments are missing
+     */
     public static void requireTaskArgs(String args, String command) throws GoatException {
         if (args.isEmpty()) {
             if (command.equals("todo")) {
@@ -62,8 +69,8 @@ public class Parser {
             } else if (command.equals("deadline")) {
                 throw new GoatException("deadline task requires arguments <taskname> /by <YYYY-MM-DD>");
             } else {
-                throw new GoatException("event task requires arguments <taskname> /from <YYYY-MM-DD> " +
-                        "/to <YYYY-MM-DD");
+                throw new GoatException("event task requires arguments <taskname> /from <YYYY-MM-DD> "
+                        + "/to <YYYY-MM-DD>");
             }
 
         }

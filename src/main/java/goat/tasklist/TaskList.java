@@ -84,6 +84,13 @@ public class TaskList {
         System.out.println("Ok, I've marked this task as not done yet\n" + task);
     }
 
+    /**
+     * Updates a task's priority and persists the updated task list.
+     *
+     * @param index index of the task to update (0-based)
+     * @param arguments priority value (LOW, MED, HIGH)
+     * @throws IOException if saving to storage fails
+     */
     public void setPriority(int index, String arguments) throws IOException {
         Task task = tasks.get(index);
         arguments = arguments.trim().toUpperCase();
@@ -101,6 +108,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Returns the number of tasks currently in the list.
+     *
+     * @return task count
+     */
     public int size() {
         return tasks.size();
     }
@@ -123,6 +135,11 @@ public class TaskList {
         return matchedTasks;
     }
 
+    /**
+     * Builds a user-facing string containing all tasks with numbering.
+     *
+     * @return formatted list string, or an empty-list message
+     */
     public String listAsString() {
         if (tasks.isEmpty()) {
             return "No tasks in your list!";

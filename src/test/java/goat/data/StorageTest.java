@@ -1,21 +1,20 @@
 package goat.data;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-import goat.exceptions.GoatException;
-import goat.tasklist.Priority;
-import goat.ui.Goat;
 import org.junit.jupiter.api.Test;
 
+import goat.exceptions.GoatException;
+import goat.tasklist.Priority;
 import goat.tasks.Deadlines;
 import goat.tasks.Events;
 import goat.tasks.Task;
 import goat.tasks.ToDos;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 
 /**

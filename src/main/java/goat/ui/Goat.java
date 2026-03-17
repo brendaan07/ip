@@ -1,21 +1,19 @@
 package goat.ui;
 
-import javafx.application.Platform;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 import goat.data.Parser;
 import goat.data.Storage;
 import goat.exceptions.GoatException;
 import goat.exceptions.MissingArgumentException;
-import goat.tasklist.TaskList;
 import goat.tasklist.Priority;
+import goat.tasklist.TaskList;
 import goat.tasks.Deadlines;
 import goat.tasks.Events;
 import goat.tasks.Task;
 import goat.tasks.ToDos;
+import javafx.application.Platform;
 
 
 /**
@@ -49,6 +47,7 @@ public class Goat {
                 return handleHelp();
             case "bye":
                 Platform.exit();
+                return "Bye!";
             case "list":
                 taskList.list();
                 return taskList.listAsString();
@@ -84,7 +83,8 @@ public class Goat {
         return "Added todo: " + arguments;
     }
 
-    private String handleDeadline(String arguments, TaskList taskList) throws MissingArgumentException, IOException, GoatException {
+    private String handleDeadline(String arguments, TaskList taskList)
+            throws MissingArgumentException, IOException, GoatException {
         Parser.requireTaskArgs(arguments, "deadline");
         String[] parts = arguments.split("/by", 2);
 
@@ -98,7 +98,8 @@ public class Goat {
         return "Added deadline: " + name + " by " + by;
     }
 
-    private String handleEvent(String arguments, TaskList taskList) throws MissingArgumentException, IOException, GoatException {
+    private String handleEvent(String arguments, TaskList taskList)
+            throws MissingArgumentException, IOException, GoatException {
         Parser.requireTaskArgs(arguments, "event");
         String[] parts = arguments.split("/from", 2);
         if (parts.length < 2 || parts[1].isBlank()) {
@@ -109,7 +110,8 @@ public class Goat {
 
         String[] dates = parts[1].split("/to", 2);
         if (dates.length < 2 || dates[0].isBlank() || dates[1].isBlank()) {
-            throw new MissingArgumentException("Event must include both '/from' and '/to' dates in the format <YYYY-MM-DD>");
+            throw new MissingArgumentException(
+                    "Event must include both '/from' and '/to' dates in the format <YYYY-MM-DD>");
         }
         String from = dates[0].trim();
         String to = dates[1].trim();
@@ -117,7 +119,8 @@ public class Goat {
         return "Added event: " + name + " from " + from + " to " + to;
     }
 
-    private String handleDelete(String arguments, TaskList taskList) throws MissingArgumentException, GoatException, IOException {
+    private String handleDelete(String arguments, TaskList taskList)
+            throws MissingArgumentException, GoatException, IOException {
         Parser.requireArgs(arguments, "delete");
         int index = Integer.parseInt(arguments) - 1;
         taskList.delete(index);
@@ -144,10 +147,21 @@ public class Goat {
         if (parts.length < 2 || parts[1].isBlank()) {
             throw new GoatException("Indicate priority level LOW, MED or HIGH");
         }
+
+        int index;
         try {
-            int index = Integer.parseInt(parts[0]) - 1;
+            index = Integer.parseInt(parts[0]) - 1;
+        } catch (NumberFormatException e) {
+            throw new GoatException("Please provide a valid task number for priority");
+        }
+
+        if (index < 0 || index >= taskList.size()) {
+            throw new GoatException("Invalid index! There are only " + taskList.size() + " tasks");
+        }
+
+        try {
             taskList.setPriority(index, parts[1]);
-        } catch (IOException e) {
+        } catch (IOException | IllegalArgumentException e) {
             throw new GoatException("Priority must be included in the format LOW, MED or HIGH");
         }
         return "Priority changed to " + arguments;
@@ -156,7 +170,9 @@ public class Goat {
     private String handleFind(String arguments, TaskList taskList) throws MissingArgumentException {
         Parser.requireArgs(arguments, "find");
         ArrayList<Task> results = taskList.find(arguments);
-        if (results.isEmpty()) return "No matching tasks found";
+        if (results.isEmpty()) {
+            return "No matching tasks found";
+        }
         StringBuilder sb = new StringBuilder("Matching tasks:\n");
         for (int i = 0; i < results.size(); i++) {
             sb.append(i + 1).append(". ").append(results.get(i)).append("\n");
