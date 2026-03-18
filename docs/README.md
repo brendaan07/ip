@@ -14,7 +14,7 @@ and input for dates, you are sure to manage your tasks well with Goat!
 
 ## Adding todos
 
-To add a todos, simply type 'todo {Todo name} {Date}'.
+To add a todo task, simply type 'todo {Todo name} {Date}'.
 
 Example: `todo Read Book`
 
@@ -38,7 +38,7 @@ Added deadline: Submit Homework by 2026-02-20
 
 ## Adding events
 
-To add a events, simply type deadline {Event name} /from {Date} /to {Date}.
+To add an event, simply type deadline {Event name} /from {Date} /to {Date}.
 If you forget to input a from or to date, don't worry, Goat chatbot will simply prompt 
 you to input the correct details
 
@@ -107,7 +107,7 @@ Example: 'find math'
 If you need help while running the chatbot, simply type 'help' and
 you will be prompted with the link for this user guide!
 
-Format 'help'
+Format: 'help'
 - Goat will prompt the user guide website
 
 ## Close the Program
@@ -115,5 +115,5 @@ Format 'help'
 Close the Chatbot. Don't worry, your tasks are saved on your hard disk 
 and will persist between restarts!
 
-Format 'bye'
+Format: 'bye'
 
