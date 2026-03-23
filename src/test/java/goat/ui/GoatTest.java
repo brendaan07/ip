@@ -63,4 +63,40 @@ public class GoatTest {
 
         assertEquals("Priority must be included in the format LOW, MED or HIGH", response);
     }
+
+    @Test
+    public void getResponse_markInvalidTaskNumber_returnsMessage() {
+        Goat goat = new Goat();
+
+        String response = goat.getResponse("mark abc");
+
+        assertEquals("Please provide a valid task number for mark", response);
+    }
+
+    @Test
+    public void getResponse_markIndexOutOfBounds_returnsMessage() {
+        Goat goat = new Goat();
+
+        String response = goat.getResponse("mark 999");
+
+        assertEquals("Invalid index! There are only 1 tasks", response);
+    }
+
+    @Test
+    public void getResponse_unmarkInvalidTaskNumber_returnsMessage() {
+        Goat goat = new Goat();
+
+        String response = goat.getResponse("unmark abc");
+
+        assertEquals("Please provide a valid task number for unmark", response);
+    }
+
+    @Test
+    public void getResponse_unmarkIndexOutOfBounds_returnsMessage() {
+        Goat goat = new Goat();
+
+        String response = goat.getResponse("unmark 999");
+
+        assertEquals("Invalid index! There are only 1 tasks", response);
+    }
 }

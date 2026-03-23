@@ -127,16 +127,38 @@ public class Goat {
         return "Deleted: " + arguments;
     }
 
-    private String handleMark(String arguments, TaskList taskList) throws MissingArgumentException, IOException {
+    private String handleMark(String arguments, TaskList taskList)
+            throws MissingArgumentException, IOException, GoatException {
         Parser.requireArgs(arguments, "mark");
-        int index = Integer.parseInt(arguments) - 1;
+        int index;
+        try {
+            index = Integer.parseInt(arguments) - 1;
+        } catch (NumberFormatException e) {
+            throw new GoatException("Please provide a valid task number for mark");
+        }
+
+        if (index < 0 || index >= taskList.size()) {
+            throw new GoatException("Invalid index! There are only " + taskList.size() + " tasks");
+        }
+
         taskList.mark(index);
         return "Marked " + arguments + " as done!";
     }
 
-    private String handleUnmark(String arguments, TaskList taskList) throws MissingArgumentException, IOException {
+    private String handleUnmark(String arguments, TaskList taskList)
+            throws MissingArgumentException, IOException, GoatException {
         Parser.requireArgs(arguments, "unmark");
-        int index = Integer.parseInt(arguments) - 1;
+        int index;
+        try {
+            index = Integer.parseInt(arguments) - 1;
+        } catch (NumberFormatException e) {
+            throw new GoatException("Please provide a valid task number for unmark");
+        }
+
+        if (index < 0 || index >= taskList.size()) {
+            throw new GoatException("Invalid index! There are only " + taskList.size() + " tasks");
+        }
+
         taskList.unmark(index);
         return "Unmarked " + arguments;
     }
