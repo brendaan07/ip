@@ -95,7 +95,8 @@ Example: 'priority 2 HIGH'
 
 ## Find tasks
 
-Allows you to search for tasks using a keyword
+Allows you to search for tasks using a keyword. Note that this command is 
+case-sensitive!
 
 Format: 'find {task name} '
 - Displays all tasks whose name contains <task name>
