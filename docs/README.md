@@ -77,7 +77,7 @@ Allows you to mark or unmark tasks as completed or uncompleted!
 Format: 'mark {index}' OR 'unmark {index}'
 - Marks or unmarks the task at the specified index
 
-Example: 'mark 1'
+Example: 'mark 1' 
 Example: 'unmark 2'
 
 ## Set Task Priority
